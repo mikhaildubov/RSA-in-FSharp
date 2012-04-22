@@ -14,9 +14,9 @@
 <br>
 
 <h2>Reference books:</h2>
-<table border = "0" width = "67%">
+<table border = "0" width = "70%">
 <td align = "center" valign = "bottom" width = "27%"><img src = "http://s019.radikal.ru/i630/1204/8a/1d30363f4c91.jpg"/></td>
-<td align = "center" valign = "bottom" width = "20%"><img src = "http://photo.goodreads.com/books/1171656328l/112246.jpg"/></td>
+<td align = "center" valign = "bottom" width = "23%"><img src = "http://photo.goodreads.com/books/1171656328l/112246.jpg"/></td>
 <td align = "center" valign = "bottom" width = "20%"><img src = "http://static.ozone.ru/multimedia/books_covers//1002463585.jpg"/></td>
 </table>
 
