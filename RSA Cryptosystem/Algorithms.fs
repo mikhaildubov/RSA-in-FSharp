@@ -49,7 +49,7 @@ module Algorithms =
             for i = 1 to t do
                 nontrivial_roots <- nontrivial_roots || (next = 1I && prev <> 1I && prev <> (n-1I));
                 prev <- next; next <- (prev*prev) % n
-            if (prev <> 1I) then true
+            if (prev <> 1I || nontrivial_roots) then true
             else false
 
         let miller_rabin n s =
