@@ -6,8 +6,8 @@
 <p>The implementation uses the <em>System.Numerics.BigInteger</em> structure to represent messages that are encoded using the RSA algorithm. This allowes one to use the RSA keys of arbitrary length. The message length must be always shorter than that of the public key.</p>
 <p>Here is an example of RSA-1024 encryption:</p>
 <code>
-let (publ, priv) = RSA.keys 1024 3<br>
-let encrypted = RSA.encrypt publ 1783909402987367933203888609541393157688138650729851396068499958652716565396539501100910068361101I
+let (publ, priv) = RSA.keys 1024 3
+let encrypted = RSA.encrypt publ 178390940298736793320388860954139315768813865072985139606849995865068361101I
 </code>
 <br>
 
@@ -16,8 +16,8 @@ let encrypted = RSA.encrypt publ 17839094029873679332038886095413931576881386507
 <br>
 
 <h2>Reference books:</h2>
-<table border = "0" width = "70%">
-<td align = "center" valign = "bottom" width = "30%"><img src = "http://s019.radikal.ru/i630/1204/8a/1d30363f4c91.jpg"/></td>
+<table border = "0" width = "67%">
+<td align = "center" valign = "bottom" width = "27%"><img src = "http://s019.radikal.ru/i630/1204/8a/1d30363f4c91.jpg"/></td>
 <td align = "center" valign = "bottom" width = "20%"><img src = "http://photo.goodreads.com/books/1171656328l/112246.jpg"/></td>
 <td align = "center" valign = "bottom" width = "20%"><img src = "http://static.ozone.ru/multimedia/books_covers//1002463585.jpg"/></td>
 </table>
