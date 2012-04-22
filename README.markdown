@@ -5,10 +5,8 @@
 <h2>Implementation characteristics</h2>
 <p>The implementation uses the <em>System.Numerics.BigInteger</em> structure to represent messages that are encoded using the RSA algorithm. This allowes one to use the RSA keys of arbitrary length. The message length must be always shorter than that of the public key.</p>
 <p>Here is an example of RSA-1024 encryption:</p>
-<code>
-let (publ, priv) = RSA.keys 1024 3
-let encrypted = RSA.encrypt publ 178390940298736793320388860954139315768813865072985139606849995865068361101I
-</code>
+	let (publ, priv) = RSA.keys 1024 3
+	let encrypted = RSA.encrypt publ 178390940298736793320388860954139315768813865072985139606849995865068361101I
 <br>
 
 <h2>Illustrations</h2>
