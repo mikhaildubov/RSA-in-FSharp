@@ -23,9 +23,11 @@ module RSA =
         ((n, (new bigint(e))), (n, d))
 
 
+
     /// Encrypts the message using the public key
     let encrypt msg (n, e) =
         Algorithms.mod_exp msg e n
+
 
     /// Decrypts the message using the private key
     let decrypt enc (n, d) =

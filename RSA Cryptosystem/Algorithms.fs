@@ -8,8 +8,8 @@ module Algorithms =
     let rec mod_exp a b n = 
         if b = 0I then 1I
         else let z = mod_exp a (b/2I) n
-             if (b % 2I = 0I) then ((z*z) % n) else ((a*z*z) % n)
-
+             if (b % 2I = 0I) then ((z*z) % n)
+                              else ((a*z*z) % n)
 
 
     /// Modular inverse. Uses extended Euclid algorithm.
@@ -29,6 +29,7 @@ module Algorithms =
     let rec gcd a b =
         if b = 0I then a
         else gcd b (a % b)
+
 
     /// Miller-Rabin probabilistic primality test.
     /// P(mistake) = 2^(<c>-s</c>), where <c>s</c> is the number of iterations.

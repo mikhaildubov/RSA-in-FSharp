@@ -21,6 +21,7 @@ module Random =
             else next' r (b-1) (acc*2I + new bigint(r.Next(2)))
         next' rand (bits-1) 1I
 
+
     /// Generates a prime bigint of specified bit-length.
     /// Requires a <c>System.Random object</c> to be passed as a parameter.
     /// The <c>s</c> parameter denotes the number of iterations in the primality test.
@@ -31,6 +32,7 @@ module Random =
         let random_bigint = next_bigint_bits rand bits
         let candidate = if (random_bigint % 2I = 0I) then (random_bigint + 1I) else random_bigint
         search_prime candidate
+
 
     /// Generates a prime bigint of specified bit-length that satisfies the given predicate.
     /// Requires a <c>System.Random object</c> to be passed as a parameter.
