@@ -6,8 +6,8 @@ module Program =
     let RSA_Demo bits msg = 
 
         let (publ, priv) = RSA.keys bits 3
-        let encrypted = RSA.encrypt msg publ
-        let decrypted = RSA.encrypt encrypted priv
+        let encrypted = RSA.encrypt publ msg
+        let decrypted = RSA.decrypt priv encrypted
 
         printfn "message = %A" msg;
         printfn "encrypted = %A" encrypted;

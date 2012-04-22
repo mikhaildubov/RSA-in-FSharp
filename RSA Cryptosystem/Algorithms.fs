@@ -3,7 +3,6 @@
 /// Contains implementations of the basic numerical algorithms used in RSA.
 module Algorithms =
     
-
     /// Binary modular exponentiation.
     let rec mod_exp a b n = 
         if b = 0I then 1I

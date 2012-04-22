@@ -25,10 +25,10 @@ module RSA =
 
 
     /// Encrypts the message using the public key
-    let encrypt msg (n, e) =
+    let encrypt (n, e) msg =
         Algorithms.mod_exp msg e n
 
 
     /// Decrypts the message using the private key
-    let decrypt enc (n, d) =
+    let decrypt (n, d) enc =
         Algorithms.mod_exp enc d n
