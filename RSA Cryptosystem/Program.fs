@@ -13,4 +13,13 @@ module Program =
         printfn "encrypted = %A" encrypted;
         printfn "decrypted = %A" decrypted;
 
-    RSA_Demo 16 1099I
+    let Time f =
+        let st = new System.Diagnostics.Stopwatch()
+        st.Start()
+        let returnValue = f();
+        printf "Time: %i\n" st.ElapsedMilliseconds;
+        st.Stop();
+        returnValue
+
+
+    Time (fun() -> RSA_Demo 16 1099I)

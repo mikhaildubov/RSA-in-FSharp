@@ -38,9 +38,10 @@ module Random =
     /// Requires a <c>System.Random object</c> to be passed as a parameter.
     /// The <c>s</c> parameter denotes the number of iterations in the primality test.
     let next_prime_predicate rand bits s predicate =
-        let rec search_prime x =
-            if ((Algorithms.is_prime x s) && (predicate x)) then x
-            else search_prime (x + 2I)
+        let rec search_prime x attempts =
+            if ((Algorithms.is_prime x s) && (predicate x)) then 
+                printfn "found a prime after %A attempts" attempts; x
+            else search_prime (x + 2I) (attempts+1)
         let random_bigint = next_bigint_bits rand bits
         let candidate = if (random_bigint % 2I = 0I) then (random_bigint + 1I) else random_bigint
-        search_prime candidate
+        search_prime candidate 1

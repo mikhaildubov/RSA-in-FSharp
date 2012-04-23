@@ -3,12 +3,14 @@
 /// The implementation of basic RSA algorithms.
 module RSA =
     
-    /// Generates the keys. The public exponent is to be defined by the user (the <c>e</c> parameter).
-    /// Returns the tuple (public, private), where the public key is a tuple (n, e) and the private key - (n, d)
+    /// Generates a pair of public and private keys. The public exponent is to be defined by the user (the <c>e</c> parameter).
+    /// Returns the tuple (public, private), where the public key is another tuple (n, e), while the private key is (n, d)
     let keys bits (e:int) =
         let rand = new System.Random()
-        let p = Random.next_prime_predicate rand (bits/2) 30 (fun x -> (Algorithms.gcd (x-1I) (new bigint(e))) = 1I)
-        let q = Random.next_prime_predicate rand (bits/2) 30 (fun x -> (Algorithms.gcd (x-1I) (new bigint(e))) = 1I && x <> p)
+        let p = Random.next_prime_predicate rand (bits/2) 30
+                    (fun x -> (Algorithms.gcd (x-1I) (new bigint(e))) = 1I)
+        let q = Random.next_prime_predicate rand (bits/2) 30
+                    (fun x -> (Algorithms.gcd (x-1I) (new bigint(e))) = 1I && x <> p)
         let n = p*q
         let phi_n = (p-1I)*(q-1I)
         let d = Algorithms.mod_inv (new bigint(e)) phi_n
