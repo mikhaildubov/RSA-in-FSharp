@@ -53,11 +53,12 @@ module Algorithms =
             else false
 
         let miller_rabin n s =
-            let rand = new System.Random()
+            let rand = Random.bigint_generator (n-2I)
             let rec test c = 
                 if c = 0 then true
                 else
-                    let a = (Random.next_bigint rand (n-3I)) + 2I
+                    let a = rand() + 2I
+                    //printf "a = %A " a;
                     if (witness a n) then false
                     else test (c-1)
             test s

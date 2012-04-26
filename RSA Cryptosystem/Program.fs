@@ -11,7 +11,7 @@ module Program =
 
         printfn "message = %A" msg;
         printfn "encrypted = %A" encrypted;
-        printfn "decrypted = %A" decrypted;
+        printfn "decrypted = %A" decrypted
 
     let Time f =
         let st = new System.Diagnostics.Stopwatch()

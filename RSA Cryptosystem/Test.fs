@@ -14,3 +14,13 @@ module Test =
     Algorithms.is_prime 1729I 30;; // Carmichael number
     Algorithms.is_prime 997I 30;;  // Prime number
     Algorithms.is_prime 5963I 30;; // Composite number
+    
+    Random.next_bigint_bits (new System.Random()) 3;;
+
+    let rand = Random.bigint_generator 97I;;
+    let a = Array.create 10 0;;
+    for i=1 to 10000 do
+        let next = rand()
+        a.[(int)(next)/10] <- a.[(int)(next)/10]+1;;
+    for i=0 to 9 do
+        printf "%A " a.[i];;

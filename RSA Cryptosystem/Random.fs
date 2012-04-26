@@ -3,15 +3,32 @@
 /// Contains functions that generate random bigint's.
 module Random =
 
-    /// Generates a bigint in range [<c>0</c>, <c>max</c>).
-    /// Requires a <c>System.Random object</c> to be passed as a parameter.
-    let next_bigint (rand:System.Random) max =
-        let rec next' (r:System.Random) m acc =
-            let nxt = acc*2I + new bigint(r.Next(2))
-            if nxt >= max then acc
-            else next' r max nxt
-        next' rand max 0I
+    /// Cell type used in bigint_generator.
+    type cell = {
+                    table : bigint array
+                    m : bigint
+                    mutable j : int
+                    mutable k : int
+                }
 
+    /// An additive random bigint generator.
+    /// Generates bigint's in range [<c>0</c>, <c>n</c>).
+    /// Uses algorithm 3.2.2A from TAOCP.
+    let bigint_generator n =
+        let x = {
+                    table = Array.create 55 0I
+                    m = n
+                    j = 23
+                    k = 54
+                }
+        let rand = (new System.Random())
+        let bits_max = (int)(System.Numerics.BigInteger.Log (n, 2.))
+        for i=0 to 54 do x.table.[i] <- (next_bigint_bits rand (rand.Next(bits_max)+1));
+        fun () -> (x.table.[x.k] <- (x.table.[x.k] + x.table.[x.j]) % x.m;
+                   let res = x.table.[x.k];
+                   x.j <- if x.j = 0 then 54 else (x.j - 1);
+                   x.k <- if x.k = 0 then 54 else (x.k - 1);
+                   res)
 
     /// Generates a bigint of specified bit-length.
     /// Requires a <c>System.Random object</c> to be passed as a parameter.
@@ -19,7 +36,7 @@ module Random =
         let rec next' (r:System.Random) b acc =
             if b = 0 then acc
             else next' r (b-1) (acc*2I + new bigint(r.Next(2)))
-        next' rand (bits-1) 1I
+        next' rand bits 0I
 
 
     /// Generates a prime bigint of specified bit-length.
