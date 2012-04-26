@@ -3,6 +3,15 @@
 /// Contains functions that generate random bigint's.
 module Random =
 
+    /// Generates a bigint of specified bit-length.
+    /// Requires a <c>System.Random object</c> to be passed as a parameter.
+    let next_bigint_bits (rand:System.Random) bits =
+        let rec next' (r:System.Random) b acc =
+            if b <= 0 then acc
+            else next' r (b-1) (acc*2I + new bigint(r.Next(2)))
+        next' rand (bits-1) 1I // To preserve the bit length
+
+
     /// Cell type used in bigint_generator.
     type cell = {
                     table : bigint array
@@ -30,14 +39,6 @@ module Random =
                    x.k <- if x.k = 0 then 54 else (x.k - 1);
                    res)
 
-    /// Generates a bigint of specified bit-length.
-    /// Requires a <c>System.Random object</c> to be passed as a parameter.
-    let next_bigint_bits (rand:System.Random) bits =
-        let rec next' (r:System.Random) b acc =
-            if b = 0 then acc
-            else next' r (b-1) (acc*2I + new bigint(r.Next(2)))
-        next' rand bits 0I
-
 
     /// Generates a prime bigint of specified bit-length.
     /// Requires a <c>System.Random object</c> to be passed as a parameter.
@@ -56,7 +57,7 @@ module Random =
     /// The <c>s</c> parameter denotes the number of iterations in the primality test.
     let next_prime_predicate rand bits s predicate =
         let rec search_prime x attempts =
-            if ((Algorithms.is_prime x s) && (predicate x)) then 
+            if ((Algorithms.is_prime x s) && (predicate x)) then
                 printfn "found a prime after %A attempts" attempts;
                 x
             else search_prime (x + 2I) (attempts+1)

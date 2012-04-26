@@ -7,9 +7,9 @@ module RSA =
     /// Returns the tuple (public, private), where the public key is another tuple (n, e), while the private key is (n, d)
     let keys bits (e:int) =
         let rand = new System.Random()
-        let p = Random.next_prime_predicate rand (bits/2) 30
+        let p = Random.next_prime_predicate rand (bits/2) 30 // recommended (bits/2)?
                     (fun x -> (Algorithms.gcd (x-1I) (new bigint(e))) = 1I)
-        let q = Random.next_prime_predicate rand (bits/2) 30
+        let q = Random.next_prime_predicate rand (bits/2) 30 // recommended (bits/2)?
                     (fun x -> (Algorithms.gcd (x-1I) (new bigint(e))) = 1I && x <> p)
         let n = p*q
         let phi_n = (p-1I)*(q-1I)
