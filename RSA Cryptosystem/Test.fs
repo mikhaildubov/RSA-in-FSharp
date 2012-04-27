@@ -17,7 +17,7 @@ module Test =
     
     Random.next_bigint_bits (new System.Random()) 3;;
 
-    let rand = Random.bigint_generator 97I;;
+    let rand = Random.bigint_generator 100I;;
     let a = Array.create 10 0;;
     for i=1 to 10000 do
         let next = rand()

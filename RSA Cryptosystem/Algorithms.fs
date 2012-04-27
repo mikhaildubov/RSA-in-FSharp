@@ -87,8 +87,8 @@ module Algorithms =
                             else false
             check 0
 
-        if (divisible_by_small_prime x)
+        if (divisible_by_small_prime x) // Optimization using a table of small primes
             then false
-            else if (x = 1I || Array.exists (fun elem -> elem = x) small_primes)
+            else if (x = 1I || Array.exists (fun elem -> elem = x) small_primes) // => very small keys (p < 1000)
                     then true
-                    else (miller_rabin x s)
+                    else (miller_rabin x s) // Miller-Rabin test call
